@@ -18,10 +18,34 @@ impl Dog for Husky {
     }
 }
 
+pub trait Hello {
+    fn hello(&self) -> String {
+        String::from("World")
+    }
+}
+
+pub struct Sylvain {}
+
+impl Hello for Sylvain {
+    fn hello(&self) -> String {
+        String::from("Sylvain")
+    }
+}
+
+pub struct Anonymous {}
+
+impl Hello for Anonymous {}
+
 fn main() {
     let labrador = Labrador{};
     println!("{}", labrador.bark());
 
     let husky = Husky{};
     println!("{}", husky.bark());
+
+    let sylvain = Sylvain{};
+    let anonymous = Anonymous{};
+
+    println!("Sylvain: {}", sylvain.hello());
+    println!("Anonymous: {}", anonymous.hello());
 }
